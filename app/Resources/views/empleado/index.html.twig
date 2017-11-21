@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Empleados</h1>
+
+    <table class="table table-striped table-bordered table-hovegt6r">
+        <thead>
+            <tr>
+                <th>Idempleado</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Nit</th>
+                <th>Dpi</th>
+                <th>Telefono</th>
+                <th>Usuario</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for empleado in empleados %}
+            <tr>
+                <td><a href="{{ path('empleado_show', { 'id': empleado.idEmpleado }) }}">{{ empleado.idEmpleado }}</a></td>
+                <td>{{ empleado.nombre }}</td>
+                <td>{{ empleado.direccion }}</td>
+                <td>{{ empleado.nit }}</td>
+                <td>{{ empleado.dpi }}</td>
+                <td>{{ empleado.telefono }}</td>
+                <td>{{ empleado.usuario }}</td>
+                <td>{{ empleado.password }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('empleado_show', { 'id': empleado.idEmpleado }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('empleado_edit', { 'id': empleado.idEmpleado }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a title="Clic si desea Eliminar" href="{{path('empleado_delete',{"id":empleado.idEmpleado})}}" class="glyphicon glyphicon-trash" onclick="return confirm('¿Está seguro que desea Eliminar?')"></a>           
+                        </li> 
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>        
+            <a class="btn btn-success" href="{{ path('empleado_new') }}">Nuevo Empleado</a>        
+    </ul>
+{% endblock %}

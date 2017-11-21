@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cientes</h1>
+
+    <table class="table table-striped table-bordered table-hovegt6r">
+        <thead>
+            <tr>
+                <th>Idcliente</th>
+                <th>Nombre</th>
+                <th>Dpi</th>
+                <th>Nit</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cliente in clientes %}
+            <tr>
+                <td><a href="{{ path('cliente_show', { 'id': cliente.idCliente }) }}">{{ cliente.idCliente }}</a></td>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.dpi }}</td>
+                <td>{{ cliente.nit }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cliente_show', { 'id': cliente.idCliente }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cliente_edit', { 'id': cliente.idCliente }) }}">edit</a>
+                        </li>
+                         <li>
+                            <a title="Clic si desea Eliminar" href="{{path('cliente_delete',{"id":cliente.idCliente})}}" class="glyphicon glyphicon-trash" onclick="return confirm('¿Está seguro que desea Eliminar?')"></a>           
+                        </li> 
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>        
+            <a class="btn btn-success" href="{{ path('cliente_new') }}">Nuevo Cliente</a>        
+    </ul>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cliente</h1>
+    <hr/>
+        
+    <table>
+        <tbody>
+            <tr>
+                <th>Idcliente</th>
+                <td>{{ cliente.idCliente }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ cliente.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Dpi</th>
+                <td>{{ cliente.dpi }}</td>
+            </tr>
+            <tr>
+                <th>Nit</th>
+                <td>{{ cliente.nit }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <hr/>
+    <ul>        
+            <a class="btn btn-primary" href="{{ path('cliente_index') }}">Regresar</a>
+            <a class="btn btn-warning" href="{{ path('cliente_edit', { 'id': cliente.idCliente }) }}">Edit</a>        
+    </ul>
+{% endblock %}

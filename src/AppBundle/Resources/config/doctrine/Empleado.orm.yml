@@ -1,0 +1,55 @@
+AppBundle\Entity\Empleado:
+    type: entity
+    table: empleado
+    id:
+        idEmpleado:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_empleado
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+        direccion:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+        nit:
+            type: string
+            nullable: false
+            length: 15
+            options:
+                fixed: false
+        dpi:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        telefono:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        usuario:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

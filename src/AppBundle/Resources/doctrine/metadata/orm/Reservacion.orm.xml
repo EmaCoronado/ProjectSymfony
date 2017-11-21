@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Reservacion" table="reservacion">
+    <indexes>
+      <index name="IX_Relationship1" columns="id_empleado"/>
+      <index name="IX_Relationship2" columns="id_habitacion"/>
+      <index name="IX_Relationship3" columns="id_cliente"/>
+    </indexes>
+    <id name="idReservacion" type="integer" column="id_reservacion">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fechaReservacion" type="date" column="fecha_reservacion" nullable="false"/>
+    <field name="fechaUso" type="date" column="fecha_uso" nullable="false"/>
+    <many-to-one field="idCliente" target-entity="Cliente" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_cliente" referenced-column-name="id_cliente"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idHabitacion" target-entity="Habitacion" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_habitacion" referenced-column-name="id_habitacion"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idEmpleado" target-entity="Empleado" fetch="LAZY">
+      <join-columns>
+        <join-column name="id_empleado" referenced-column-name="id_empleado"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

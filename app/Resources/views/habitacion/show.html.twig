@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Habitación</h1>
+    <hr/>
+        
+    <table>
+        <tbody>
+            <tr>
+                <th>Idhabitacion</th>
+                <td>{{ habitacion.idHabitacion }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ habitacion.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ habitacion.numero }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <hr/>
+    <ul>        
+            <a class="btn btn-primary" href="{{ path('habitacion_index') }}">Regresar</a>        
+            <a class="btn btn-warning" href="{{ path('habitacion_edit', { 'id': habitacion.idHabitacion }) }}">Edit</a>      
+    </ul>
+{% endblock %}

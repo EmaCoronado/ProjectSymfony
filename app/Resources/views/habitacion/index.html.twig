@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Habitaciones</h1>
+
+    <table class="table table-striped table-bordered table-hovegt6r">
+        <thead>
+            <tr>
+                <th>Idhabitacion</th>
+                <th>Nombre</th>
+                <th>Numero</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for habitacion in habitacions %}
+            <tr>
+                <td><a href="{{ path('habitacion_show', { 'id': habitacion.idHabitacion }) }}">{{ habitacion.idHabitacion }}</a></td>
+                <td>{{ habitacion.nombre }}</td>
+                <td>{{ habitacion.numero }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('habitacion_show', { 'id': habitacion.idHabitacion }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('habitacion_edit', { 'id': habitacion.idHabitacion }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a title="Clic si desea Eliminar" href="{{path('habitacion_delete',{"id":habitacion.idHabitacion})}}" class="glyphicon glyphicon-trash" onclick="return confirm('¿Está seguro que desea Eliminar?')"></a>           
+                        </li> 
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>        
+            <a class="btn btn-success" href="{{ path('habitacion_new') }}">Nueva Habitación</a>        
+    </ul>
+{% endblock %}

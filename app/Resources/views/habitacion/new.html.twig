@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Creando Habitación</h1>
+    <hr/>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" class="btn btn-success" />
+    {{ form_end(form) }}
+
+    <hr/>
+    <a class="btn btn-primary" href="{{ path('habitacion_index') }}">Regresar</a>
+{% endblock %}

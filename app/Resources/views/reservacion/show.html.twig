@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservacion</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idreservacion</th>
+                <td>{{ reservacion.idReservacion }}</td>
+            </tr>
+            <tr>
+                <th>Fechareservacion</th>
+                <td>{% if reservacion.fechaReservacion %}{{ reservacion.fechaReservacion|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fechauso</th>
+                <td>{% if reservacion.fechaUso %}{{ reservacion.fechaUso|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+            <hr/>
+    <ul> 
+            <a class="btn btn-primary" href="{{ path('reservacion_index') }}">Regresar</a>
+            <a class="btn btn-warning" href="{{ path('reservacion_edit', { 'id': reservacion.idReservacion }) }}">Editar</a>        
+    </ul>
+{% endblock %}

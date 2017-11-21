@@ -1,0 +1,26 @@
+AppBundle\Entity\Habitacion:
+    type: entity
+    table: habitacion
+    id:
+        idHabitacion:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_habitacion
+            generator:
+                strategy: IDENTITY
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+        numero:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

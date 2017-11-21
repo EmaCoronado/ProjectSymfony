@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}    
+<h1>Reservaciones</h1>
+<table class="table table-striped table-bordered table-hovegt6r">
+            <tr>
+                <th>Idreservacion </th>
+                <th>Fecha Reservacion </th>
+                <th>Fecha Uso </th>
+                <th>Acciones</th>
+            </tr>
+        {% for reservacion in reservacions %}
+            <tr>
+                <td><a href="{{ path('reservacion_show', { 'id': reservacion.idReservacion }) }}">{{ reservacion.idReservacion }}</a></td>
+                <td>{% if reservacion.fechaReservacion %}{{ reservacion.fechaReservacion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if reservacion.fechaUso %}{{ reservacion.fechaUso|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('reservacion_show', { 'id': reservacion.idReservacion }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('reservacion_edit', { 'id': reservacion.idReservacion }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a title="Clic si desea Eliminar" href="{{path('reservacion_delete',{"id":reservacion.idReservacion})}}" class="glyphicon glyphicon-trash" onclick="return confirm('¿Está seguro que desea Eliminar?')"></a>           
+                        </li>    
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}      
+    </table>
+
+    <ul>
+            <a class="btn btn-success" href="{{ path('reservacion_new') }}">Nueva Reservación</a>
+    </ul>
+        
+  {% endblock %}      

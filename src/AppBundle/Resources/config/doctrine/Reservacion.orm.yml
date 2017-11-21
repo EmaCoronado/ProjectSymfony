@@ -1,0 +1,64 @@
+AppBundle\Entity\Reservacion:
+    type: entity
+    table: reservacion
+    indexes:
+        IX_Relationship1:
+            columns:
+                - id_empleado
+        IX_Relationship2:
+            columns:
+                - id_habitacion
+        IX_Relationship3:
+            columns:
+                - id_cliente
+    id:
+        idReservacion:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_reservacion
+            generator:
+                strategy: IDENTITY
+    fields:
+        fechaReservacion:
+            type: date
+            nullable: false
+            column: fecha_reservacion
+        fechaUso:
+            type: date
+            nullable: false
+            column: fecha_uso
+    manyToOne:
+        idEmpleado:
+            targetEntity: Empleado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_empleado:
+                    referencedColumnName: id_empleado
+            orphanRemoval: false
+        idHabitacion:
+            targetEntity: Habitacion
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_habitacion:
+                    referencedColumnName: id_habitacion
+            orphanRemoval: false
+        idCliente:
+            targetEntity: Cliente
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_cliente:
+                    referencedColumnName: id_cliente
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
